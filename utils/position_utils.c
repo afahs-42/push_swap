@@ -6,7 +6,7 @@
 /*   By: afahs <afahs@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 23:37:11 by afahs             #+#    #+#             */
-/*   Updated: 2025/06/23 06:10:22 by afahs            ###   ########.fr       */
+/*   Updated: 2025/06/23 08:58:02 by afahs            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,33 @@ void	get_target_position(t_stack **stack_a, t_stack **stack_b)
 	}
 }
 
+// void	assign_index(t_stack *stack_a, int stack_size)
+// {
+// 	t_stack	*ptr;
+// 	t_stack	*highest;
+// 	int		value;
+
+// 	while (--stack_size > 0)
+// 	{
+// 		ptr = stack_a;
+// 		value = -2147483648;
+// 		highest = NULL;
+// 		while (ptr)
+// 		{
+// 			if (ptr->value == -2147483648 && ptr->index == 0)
+// 				ptr->index = 1;
+// 			if (ptr->value > value && ptr->index == 0)
+// 			{
+// 				value = ptr->value;
+// 				highest = ptr;
+// 			}
+// 			ptr = ptr->next;
+// 		}
+// 		if (highest != NULL)
+// 			highest->index = stack_size;
+// 	}
+// }
+
 void	assign_index(t_stack *stack_a, int stack_size)
 {
 	t_stack	*ptr;
@@ -86,8 +113,6 @@ void	assign_index(t_stack *stack_a, int stack_size)
 		highest = NULL;
 		while (ptr)
 		{
-			if (ptr->value == -2147483648 && ptr->index == 0)
-				ptr->index = 1;
 			if (ptr->value > value && ptr->index == 0)
 			{
 				value = ptr->value;

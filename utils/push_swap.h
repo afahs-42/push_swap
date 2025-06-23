@@ -6,7 +6,7 @@
 /*   By: afahs <afahs@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 19:40:28 by afahs             #+#    #+#             */
-/*   Updated: 2025/06/23 06:15:51 by afahs            ###   ########.fr       */
+/*   Updated: 2025/06/23 08:07:01 by afahs            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int		stack_size(t_stack	*stack);
 void	free_stack(t_stack	**stack);
 
 // sort_utls.c
-void	push_chunks(t_stack **stack_a, t_stack **stack_b, int chunk_size);
+void	push_chunks(t_stack **stk_a, t_stack **stk_b, int chnk_sz);
 void	sort_three(t_stack	**stack);
 void	sort(t_stack	**stack_a,	t_stack	**stack_b);
 

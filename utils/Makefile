@@ -6,14 +6,14 @@
 #    By: afahs <afahs@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/22 23:33:50 by afahs             #+#    #+#              #
-#    Updated: 2025/06/23 06:19:41 by afahs            ###   ########.fr        #
+#    Updated: 2025/06/23 07:21:05 by afahs            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror  -lbsd
+CFLAGS = -Wall -Wextra -Werror
 
 SRCS = push_swap.c \
        ops/push_ops.c \

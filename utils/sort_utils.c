@@ -6,15 +6,28 @@
 /*   By: afahs <afahs@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 23:39:55 by afahs             #+#    #+#             */
-/*   Updated: 2025/06/23 05:58:01 by afahs            ###   ########.fr       */
+/*   Updated: 2025/06/23 09:06:33 by afahs            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
 //tool[0] = chunk_max ; tool[1] = rotations ; tool[2] = size_a ;
-static void	push_chunks_helper(int *tools, int chunk_size)
+static void	push_chunks_helper(t_stack **a, t_stack **b,
+	int *tools, int chunk_size)
 {
+	if ((*a)->index <= tools[1])
+	{
+		pb(a, b);
+		tools[0]++;
+		if (stack_size(*b) > 1 && (*b)->index < tools[1] - chunk_size / 2)
+			rb(b);
+	}
+	else
+	{
+		ra(a);
+		tools[2]++;
+	}
 	if (tools[2] >= tools[3])
 	{
 		tools[1] += chunk_size;
@@ -28,31 +41,20 @@ static void	push_chunks_helper(int *tools, int chunk_size)
 	}
 }
 
-void	push_chunks(t_stack **stack_a, t_stack **stack_b, int chunk_size)
+void	push_chunks(t_stack **a, t_stack **b, int chnk_sz)
 {
 	int	*tools;
 
 	tools = malloc(sizeof(int) * 4);
+	if (tools)
+		return ;
 	tools[0] = 0;
-	tools[1] = chunk_size;
-	while (stack_size(*stack_a) > 3)
+	tools[1] = chnk_sz;
+	while (stack_size(*a) > 3)
 	{
 		tools[2] = 0;
-		tools[3] = stack_size(*stack_a);
-		if ((*stack_a)->index <= tools[1])
-		{
-			pb(stack_a, stack_b);
-			tools[0]++;
-			if (stack_size(*stack_b) > 1
-				&& (*stack_b)->index < tools[1] - chunk_size / 2)
-				rb(stack_b);
-		}
-		else
-		{
-			ra(stack_a);
-			tools[2]++;
-		}
-		push_chunks_helper(tools, chunk_size);
+		tools[3] = stack_size(*a);
+		push_chunks_helper(a, b, tools, chnk_sz);
 	}
 	free(tools);
 }
