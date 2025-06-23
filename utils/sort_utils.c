@@ -6,7 +6,7 @@
 /*   By: afahs <afahs@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 23:39:55 by afahs             #+#    #+#             */
-/*   Updated: 2025/06/23 09:06:33 by afahs            ###   ########.fr       */
+/*   Updated: 2025/06/23 09:11:01 by afahs            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	push_chunks(t_stack **a, t_stack **b, int chnk_sz)
 	int	*tools;
 
 	tools = malloc(sizeof(int) * 4);
-	if (tools)
+	if (!tools)
 		return ;
 	tools[0] = 0;
 	tools[1] = chnk_sz;
