@@ -6,7 +6,7 @@
 /*   By: afahs <afahs@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 23:32:41 by afahs             #+#    #+#             */
-/*   Updated: 2025/06/23 06:08:30 by afahs            ###   ########.fr       */
+/*   Updated: 2025/06/29 04:22:53 by afahs            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,17 +66,17 @@ int	stack_size(t_stack *stack)
 	return (size);
 }
 
-void	free_stack(t_stack **stack)
+void	free_stack(t_stack *stack)
 {
 	t_stack	*tmp;
 
-	if (!stack || !(*stack))
+	if (!stack)
 		return ;
-	while (*stack)
+	while (stack)
 	{
-		tmp = (*stack)->next;
-		free(*stack);
-		*stack = tmp;
+		tmp = (stack)->next;
+		free(stack);
+		stack = tmp;
 	}
-	*stack = NULL;
+	stack = NULL;
 }

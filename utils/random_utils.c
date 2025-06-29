@@ -6,7 +6,7 @@
 /*   By: afahs <afahs@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 14:07:51 by afahs             #+#    #+#             */
-/*   Updated: 2025/06/23 06:10:05 by afahs            ###   ########.fr       */
+/*   Updated: 2025/06/29 06:58:03 by afahs            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,17 @@ void	shift_stack(t_stack **stack_a)
 			lowest_pos--;
 		}
 	}
+}
+
+void	free_split(char **split, int *nb)
+{
+	int	i;
+
+	i = 0;
+	while (i < nb[0] - 1)
+	{
+		free(split[i]);
+		i++;
+	}
+	free(split);
 }

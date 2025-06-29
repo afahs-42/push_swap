@@ -6,7 +6,7 @@
 /*   By: afahs <afahs@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 00:03:09 by afahs             #+#    #+#             */
-/*   Updated: 2025/06/23 05:48:47 by afahs            ###   ########.fr       */
+/*   Updated: 2025/06/29 06:32:24 by afahs            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	is_number(char *s)
 	long	n;
 
 	i = 0;
+	n = 0;
 	if (!s || !*s)
 		return (0);
 	if (s[i] == '-' || s[i] == '+')
@@ -84,40 +85,45 @@ int	has_duplicates(t_stack *stack)
 	return (0);
 }
 
-static t_stack	*fill_stack(int ac, char **av)
+static t_stack	*fill_stack(int ac, char **av, int *n)
 {
 	t_stack		*stack_a;
 	long int	nb;
 	int			i;
 
 	stack_a = NULL;
-	i = 1;
-	while (i < ac)
+	i = 0;
+	while (i < *n - 1)
 	{
 		nb = ft_atoi(av[i]);
-		if (i == 1)
+		if (i == 0)
 			stack_a = stack_new((int)nb);
 		else
 			stack_add_bottom(&stack_a, stack_new((int)nb));
 		i++;
+		ac++;
 	}
 	return (stack_a);
 }
 
-t_stack	*parse_args(int c, char **v)
+t_stack	*parse_args(int c, char **v, int *nb)
 {
 	int		i;
 	t_stack	*s;
 
-	i = 1;
-	while (i < c)
+	i = 0;
+	s = NULL;
+	while (i < *nb - 1)
 	{
 		if (!is_number(v[i]))
 			return (NULL);
 		i++;
 	}
-	s = fill_stack(c, v);
+	s = fill_stack(c, v, nb);
 	if (has_duplicates(s))
+	{
+		free_stack(s);
 		return (NULL);
+	}
 	return (s);
 }
