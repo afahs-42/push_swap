@@ -1,41 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_ops.c                                         :+:      :+:    :+:   */
+/*   gnl.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afahs <afahs@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/16 10:24:21 by afahs             #+#    #+#             */
-/*   Updated: 2025/07/04 21:53:01 by afahs            ###   ########.fr       */
+/*   Created: 2025/05/30 18:16:00 by afahs             #+#    #+#             */
+/*   Updated: 2025/07/05 00:16:45 by afahs            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#ifndef GNL_H
+# define GNL_H
+# include <fcntl.h>
+# include <unistd.h>
+# include <stdlib.h>
 
-void	pa(t_stack **a, t_stack **b, int i)
-{
-	t_stack	*tmp;
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
 
-	if (!(*b))
-		return ;
-	tmp = *b;
-	*b = (*b)->next;
-	tmp->next = *a;
-	*a = tmp;
-	if (i)
-		write(1, "pa\n", 3);
-}
+size_t	ft_strlen(const char *s);
+char	*ft_strchr(const char *s, int c);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strdup(const char *s);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*get_next_line(int fd);
 
-void	pb(t_stack **a, t_stack **b, int i)
-{
-	t_stack	*tmp;
-
-	if (!(*a))
-		return ;
-	tmp = *a;
-	*a = (*a)->next;
-	tmp->next = *b;
-	*b = tmp;
-	if (i)
-		write(1, "pb\n", 3);
-}
+#endif

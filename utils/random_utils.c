@@ -6,7 +6,7 @@
 /*   By: afahs <afahs@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 14:07:51 by afahs             #+#    #+#             */
-/*   Updated: 2025/06/29 06:58:03 by afahs            ###   ########.fr       */
+/*   Updated: 2025/07/05 00:25:55 by afahs            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,6 @@ int	abs_value(int n)
 	if (n < 0)
 		return (n * -1);
 	return (n);
-}
-
-int	is_sorted(t_stack *stack)
-{
-	while (stack && stack->next)
-	{
-		if (stack->value > stack->next->value)
-			return (0);
-		stack = stack->next;
-	}
-	return (1);
 }
 
 static int	get_lowest_index_position(t_stack **stack)
@@ -65,7 +54,7 @@ void	shift_stack(t_stack **stack_a)
 	{
 		while (lowest_pos < size)
 		{
-			rra(stack_a);
+			rra(stack_a, 1);
 			lowest_pos++;
 		}
 	}
@@ -73,21 +62,8 @@ void	shift_stack(t_stack **stack_a)
 	{
 		while (lowest_pos > 0)
 		{
-			ra(stack_a);
+			ra(stack_a, 1);
 			lowest_pos--;
 		}
 	}
-}
-
-void	free_split(char **split, int *nb)
-{
-	int	i;
-
-	i = 0;
-	while (i < nb[0] - 1)
-	{
-		free(split[i]);
-		i++;
-	}
-	free(split);
 }

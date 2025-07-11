@@ -6,7 +6,7 @@
 /*   By: afahs <afahs@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 23:39:55 by afahs             #+#    #+#             */
-/*   Updated: 2025/06/28 17:14:54 by afahs            ###   ########.fr       */
+/*   Updated: 2025/07/04 21:57:15 by afahs            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,21 @@ void	sort_three(t_stack **a)
 	second = (*a)->next->value;
 	third = (*a)->next->next->value;
 	if (first > second && second < third && first < third)
-		sa(a);
+		sa(a, 1);
 	else if (first > second && second > third)
 	{
-		sa(a);
-		rra(a);
+		sa(a, 1);
+		rra(a, 1);
 	}
 	else if (first > second && second < third && first > third)
-		ra(a);
+		ra(a, 1);
 	else if (first < second && second > third && first < third)
 	{
-		sa(a);
-		ra(a);
+		sa(a, 1);
+		ra(a, 1);
 	}
 	else if (first < second && second > third && first > third)
-		rra(a);
+		rra(a, 1);
 }
 
 static void	push_init(t_stack **stack_a, t_stack **stack_b)
@@ -56,14 +56,14 @@ static void	push_init(t_stack **stack_a, t_stack **stack_b)
 	{
 		if ((*stack_a)->index <= half)
 		{
-			pb(stack_a, stack_b);
+			pb(stack_a, stack_b, 1);
 			if (stack_size(*stack_b) > 1 && (*stack_b)->index < half / 2)
-				rb(stack_b);
+				rb(stack_b, 1);
 		}
 		else if (stack_size(*stack_a) > half)
-			ra(stack_a);
+			ra(stack_a, 1);
 		else
-			pb(stack_a, stack_b);
+			pb(stack_a, stack_b, 1);
 	}
 	sort_three(stack_a);
 }
@@ -74,7 +74,7 @@ void	sort(t_stack **stack_a, t_stack **stack_b)
 
 	size = stack_size(*stack_a);
 	if (size == 2 && !is_sorted(*stack_a))
-		sa(stack_a);
+		sa(stack_a, 1);
 	else if (size == 3)
 		sort_three(stack_a);
 	else if (size > 3)

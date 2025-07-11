@@ -6,7 +6,7 @@
 /*   By: afahs <afahs@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 00:09:23 by afahs             #+#    #+#             */
-/*   Updated: 2025/06/23 05:48:50 by afahs            ###   ########.fr       */
+/*   Updated: 2025/07/04 21:58:01 by afahs            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	do_rotate_both(t_stack **stack_a, t_stack **stack_b,
 	{
 		(*cost_a)--;
 		(*cost_b)--;
-		rr(stack_a, stack_b);
+		rr(stack_a, stack_b, 1);
 	}
 }
 
@@ -30,7 +30,7 @@ static void	do_reverse_rotate_both(t_stack **stack_a, t_stack **stack_b,
 	{
 		(*cost_a)++;
 		(*cost_b)++;
-		rrr(stack_a, stack_b);
+		rrr(stack_a, stack_b, 1);
 	}
 }
 
@@ -40,12 +40,12 @@ static void	do_rotate_a(t_stack **stack_a, int *cost)
 	{
 		if (*cost > 0)
 		{
-			ra(stack_a);
+			ra(stack_a, 1);
 			(*cost)--;
 		}
 		else if (*cost < 0)
 		{
-			rra(stack_a);
+			rra(stack_a, 1);
 			(*cost)++;
 		}
 	}
@@ -57,12 +57,12 @@ static void	do_rotate_b(t_stack **stack_b, int *cost)
 	{
 		if (*cost > 0)
 		{
-			rb(stack_b);
+			rb(stack_b, 1);
 			(*cost)--;
 		}
 		else if (*cost < 0)
 		{
-			rrb(stack_b);
+			rrb(stack_b, 1);
 			(*cost)++;
 		}
 	}
@@ -93,5 +93,5 @@ void	do_cheapest_move(t_stack **stack_a, t_stack **stack_b)
 		do_rotate_both(stack_a, stack_b, &cost_a, &cost_b);
 	do_rotate_a(stack_a, &cost_a);
 	do_rotate_b(stack_b, &cost_b);
-	pa(stack_a, stack_b);
+	pa(stack_a, stack_b, 1);
 }

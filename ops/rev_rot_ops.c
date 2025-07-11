@@ -6,7 +6,7 @@
 /*   By: afahs <afahs@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 11:15:06 by afahs             #+#    #+#             */
-/*   Updated: 2025/06/23 05:48:42 by afahs            ###   ########.fr       */
+/*   Updated: 2025/07/04 21:53:49 by afahs            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,24 @@ void	reverse_rotate_stack(t_stack **s)
 	*s = last;
 }
 
-void	rra(t_stack **a)
+void	rra(t_stack **a, int i)
 {
 	reverse_rotate_stack(a);
-	write(1, "rra\n", 4);
+	if (i)
+		write(1, "rra\n", 4);
 }
 
-void	rrb(t_stack **b)
+void	rrb(t_stack **b, int i)
 {
 	reverse_rotate_stack(b);
-	write(1, "rrb\n", 4);
+	if (i)
+		write(1, "rrb\n", 4);
 }
 
-void	rrr(t_stack **a, t_stack **b)
+void	rrr(t_stack **a, t_stack **b, int i)
 {
 	reverse_rotate_stack(a);
 	reverse_rotate_stack(b);
-	write(1, "rrr\n", 4);
+	if (i)
+		write(1, "rrr\n", 4);
 }
